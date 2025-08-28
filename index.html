@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Naveen — Ai&ds Portfolio</title>
+  <meta name="description" content="Naveen | AI&DS Portfolio: projects, skills, achievements, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0d12;
+      --bg-soft:#111520;
+      --card:#141a28;
+      --text:#e9edf5;
+      --muted:#9aa3b2;
+      --brand:#6c8cff;
+      --brand-2:#22d3ee;
+      --ring: rgba(108,140,255,.35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --maxw: 1100px;
+      --grad: linear-gradient(135deg,var(--brand),var(--brand-2));
+    }
+    /* Light mode */
+    .light{
+      --bg:#ffffff;
+      --bg-soft:#f4f6fb;
+      --card:#ffffff;
+      --text:#0b0d12;
+      --muted:#556072;
+      --ring: rgba(34,211,238,.35);
+      --shadow: 0 10px 24px rgba(17,24,39,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 10% -10%, rgba(108,140,255,.15), transparent 60%),
+        radial-gradient(900px 500px at 110% 10%, rgba(34,211,238,.15), transparent 60%),
+        var(--bg);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--maxw);margin-inline:auto;padding:0 20px}
+
+    /* Navbar */
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(180%) blur(12px);
+      background:color-mix(in lab, var(--bg) 70%, transparent);
+      border-bottom:1px solid color-mix(in lab, var(--text) 12%, transparent);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      height:64px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo{
+      width:36px;height:36px;border-radius:11px;
+      background:var(--grad);box-shadow:var(--shadow);
+    }
+    .nav-links{display:flex;gap:20px;align-items:center}
+    .nav-links a{
+      padding:8px 12px;border-radius:12px;font-weight:500;color:var(--muted)
+    }
+    .nav-links a:hover{background:var(--bg-soft);color:var(--text)}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:14px;border:1px solid transparent;
+      background:var(--grad);color:#fff;font-weight:600;box-shadow:var(--shadow)
+    }
+    .btn.outline{
+      background:transparent;color:var(--text);
+      border-color:color-mix(in lab, var(--text) 18%, transparent)
+    }
+    .toggle{
+      width:44px;height:36px;border-radius:12px;border:1px solid color-mix(in lab, var(--text) 18%, transparent);
+      display:grid;place-items:center;cursor:pointer;background:var(--card)
+    }
+    .hamburger{display:none;flex-direction:column;gap:4px}
+    .hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px}
+
+    /* Hero */
+    .hero{padding:72px 0 32px}
+    .hero-inner{
+      display:grid;gap:30px;align-items:center;
+      grid-template-columns:1.1fr .9fr;
+    }
+    .tag{
+      display:inline-block;padding:6px 10px;border-radius:999px;
+      border:1px solid color-mix(in lab, var(--text) 18%, transparent);
+      font-size:12px;color:var(--muted);margin-bottom:12px;background:var(--bg-soft)
+    }
+    h1{font-size:clamp(28px,4.5vw,44px);line-height:1.15;margin:0 0 10px}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-card{
+      background:var(--card);border:1px solid color-mix(in lab, var(--text) 10%, transparent);
+      padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)
+    }
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    .stat{
+      padding:12px;border-radius:14px;background:var(--bg-soft);text-align:center
+    }
+    .stat b{font-size:20px;display:block}
+
+    /* Sections */
+    section{padding:56px 0}
+    .section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+    .section-title h2{margin:0;font-size:26px}
+    .grid{display:grid;gap:18px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .card{
+      background:var(--card);border:1px solid color-mix(in lab, var(--text) 10%, transparent);
+      border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)
+    }
+
+    /* Skills */
+    .chips{display:flex;flex-wrap:wrap;gap:10px}
+    .chip{padding:8px 12px;border-radius:999px;background:var(--bg-soft);border:1px solid color-mix(in lab, var(--text) 12%, transparent);font-size:14px}
+    .skillbar{height:10px;border-radius:999px;background:var(--bg-soft);overflow:hidden;border:1px solid color-mix(in lab, var(--text) 10%, transparent)}
+    .skillbar > span{display:block;height:100%;background:var(--grad)}
+
+    /* Projects */
+    .project{display:flex;gap:16px;align-items:flex-start}
+    .project .thumb{
+      width:120px;height:84px;border-radius:14px;flex:0 0 120px;
+      background:var(--bg-soft);border:1px solid color-mix(in lab, var(--text) 10%, transparent)
+    }
+    .project h3{margin:0 0 6px;font-size:18px}
+    .project p{margin:0 0 10px;color:var(--muted)}
+    .links{display:flex;gap:10px;flex-wrap:wrap}
+
+    /* Timeline */
+    .timeline{position:relative;padding-left:24px}
+    .timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:color-mix(in lab, var(--text) 12%, transparent)}
+    .tl-item{position:relative;margin:0 0 18px}
+    .tl-item::marker{content:""}
+    .tl-dot{position:absolute;left:-2px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 4px var(--ring)}
+    .tl-card{padding-left:18px}
+
+    /* Contact */
+    form{display:grid;gap:12px}
+    input, textarea{
+      width:100%;padding:12px 14px;border-radius:14px;border:1px solid color-mix(in lab, var(--text) 16%, transparent);
+      background:var(--bg-soft);color:var(--text);font:inherit
+    }
+    textarea{min-height:120px;resize:vertical}
+    .social{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .social a{border:1px solid color-mix(in lab, var(--text) 16%, transparent);padding:8px 12px;border-radius:12px;background:var(--bg-soft);color:var(--text)}
+
+    /* Footer */
+    footer{padding:24px 0;color:var(--muted);border-top:1px solid color-mix(in lab, var(--text) 12%, transparent)}
+
+    /* Reveal animations */
+    .reveal{opacity:0;transform:translateY(16px);transition:all .6s ease}
+    .reveal.show{opacity:1;transform:none}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-inner{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr 1fr}
+      .nav-links{display:none;position:absolute;inset:64px 0 auto 0;background:var(--bg);border-bottom:1px solid color-mix(in lab, var(--text) 12%, transparent);padding:12px}
+      .nav-links.open{display:flex;flex-direction:column}
+      .hamburger{display:flex}
+    }
+    @media (max-width: 640px){
+      .grid-2,.grid-3{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Naveen<span style="color:var(--brand)">.AI&DS</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+        <a class="btn outline" href="#resume">Resume</a>
+      </nav>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="toggle" id="themeToggle" aria-label="Toggle theme">☼</button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <div class="hero-inner">
+      <div>
+        <span class="tag">👋 Hi, I’m Naveen — AI&DS Student</span>
+        <h1>Building useful things with <span style="background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent"></span> </h1>
+        <p>I love algorithms, Problem solving Techniques, and also Mathematics. Here you’ll find my projects, skills, and how to reach me.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn">View Projects</a>
+          <a href="#contact" class="btn outline">Contact Me</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>2</b><span>Projects</span></div>
+          <div class="stat"><b>2</b><span>web development</span></div>
+          <div class="stat"><b>5</b><span>Internships</span></div>
+        </div>
+      </div>
+      <div class="hero-card reveal">
+        <h3 style="margin:0 0 6px">What I’m focusing on</h3>
+        <p class="muted" style="color:var(--muted);margin:0 0 10px">Distributed systems, RESTful services, and ML for practical problems.</p>
+        <ul style="margin:0;padding-left:18px;color:var(--muted)">
+          <li>Golang + PostgreSQL for scalable APIs</li>
+          <li>Python for data/ML & automation scripts</li>
+          <li>Clean architecture & testing culture</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About</h2>
+        <a class="btn outline" href="#contact">Hire Me</a>
+      </div>
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <h3 style="margin-top:0">Who am I?</h3>
+          <p>I’m a AI&DS undergrad who enjoys turning ideas into reliable software. I care about performance, readability.</p>
+        </div>
+        <div class="card reveal">
+          <h3 style="margin-top:0">Quick Info</h3>
+          <ul style="margin:0;padding-left:18px;color:var(--muted);display:grid;gap:8px">
+            <li>Location: kallakurichi, tamilnadu, India</li>
+            
+            <li>Interests: Systems, Database, robotics, And maths</li>
+            <li>Email: <a href="mailto:naveen4@gmail.com">naveencontect4@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-title"><h2>Skills</h2></div>
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <h3>Languages</h3>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">Go</span>
+            <span class="chip">JavaScript</span>
+          </div>
+          <p style="margin:12px 0 8px;color:var(--muted)">Proficiency</p>
+          <div class="skillbar"><span style="width:86%"></span></div>
+        </div>
+        <div class="card reveal">
+          <h3>Frameworks & Tools</h3>
+          <div class="chips">
+            <span class="chip">Node.js</span>
+            <span class="chip">Express</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">React</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Git/GitHub</span>
+          </div>
+          <p style="margin:12px 0 8px;color:var(--muted)">Comfort</p>
+          <div class="skillbar"><span style="width:78%"></span></div>
+        </div>
+        <div class="card reveal">
+          <h3>Databases </h3>
+          <div class="chips">
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">MongoDB</span>Welcome to Gboard clipboard, any text that you copy will be saved here.Tap on a clip to paste it in the text box.Use the edit icon to pin, add or delete clips.Touch and hold a clip to pin it. Unpinned clips will be deleted after 1 hour.
+            <span class="chip">Firebase</span>
+            <span class="chip">Redis</span>
+            <span class="chip">Vercel</span>
+            <span class="chip">Railway</span>
+          </div>
+          <p style="margin:12px 0 8px;color:var(--muted)">Experience</p>
+          <div class="skillbar"><span style="width:72%"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements">
+    <div class="container">
+      <div class="section-title"><h2>Achievements</h2></div>
+      <div class="card reveal">
+        <div class="timeline">
+          <div class="tl-item">
+            <span class="tl-dot"></span>
+            <div class="tl-card">
+              <strong>Winner —Debugging  (College Level)</strong>
+              <div style="color:var(--muted)">2024</div>
+              <p>Led a 4-member team to design a grievance redressal portal; achieved <em>Top 2</em> in the campus round.</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <span class="tl-dot"></span>
+            <div class="tl-card">
+              <strong>brand buzz compatition on M,B,E,College </strong>
+
+          </div>
+          <div class="tl-item">
+            <span class="tl-dot"></span>
+            <div class="tl-card">
+
+              <p>Solved DSA across arrays, graphs, DP; maintain notes in <em>AlgoNotes</em>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume / Education -->
+  <section id="resume">
+    <div class="container">
+      <div class="section-title"><h2>Education</h2></div>
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <h3>B.tech.Ai&ds</h3>
+          <p style="color:var(--muted)">Maha Bharathi Engineering College• 2022–2026</p>
+          <p>CGPA: 8/10 (till Sem 2) • Core subjects: DAA, DPCO, AI, DBDM, DM, DEV.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Download Resume</h3>
+          <p>Keep an updated PDF here for quick access.</p>
+          <a class="btn" href="Naveen_Resume.pdf" download>Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title"><h2>Contact</h2></div>
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <h3 style="margin-top:0">Let’s talk</h3>
+          <p>Have a project, internship, or collaboration in mind? Drop a message — I’ll reply soon.</p>
+          <form onsubmit="event.preventDefault(); alert('Thanks! Your message has been received.');">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Email address" required>
+            <textarea name="message" placeholder="Your message..." required></textarea>
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+         </div>
+      </div>
+    </div>
+  </section>
+  <head>
+  ...
+  <!-- Add this line inside <head> to load Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+
+<!-- Instagram Button -->
+<a href="https://www.instagram.com/alone_boy_n_14/"
+   target="_blank" rel="noopener noreferrer"
+   style="display:inline-block;padding:8px 16px;border-radius:8px;
+          text-decoration:none;font-weight:600;border:1px solid #E4405F;
+          margin:5px;">
+  <span style="color:#E4405F;">Follow on Instagram</span>
+</a>
+  <!-- Other socials -->
+  <!-- Gmail Logo Link -->
+<a href="mailto:naveencontect4@gmail.com"
+   target="_blank" rel="noopener noreferrer"
+   style="display:inline-block;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+    <path fill="#D44638" d="M20 4H4C2.9 4 2 4.9 2 6v12c0 
+    1.1.9 2 2 2h16c1.1 0 2-.9 
+    2-2V6c0-1.1-.9-2-2-2z"/>
+    <path fill="#fff" d="M20 6l-8 5L4 6v12h16V6z"/>
+  </svg>
+</a>
+  <a href="https://www.linkedin.com/in/naveen-p-0334ab380/"
+   target="_blank" rel="noopener noreferrer"
+   style="display:inline-block;padding:10px 16px;border-radius:8px;
+          text-decoration:none;font-weight:600;border:1px solid #0A66C2;">
+  <span style="color:#0A66C2;">Connect on LinkedIn</span>
+  </a>
+  <a href="https://github.com/yourusername" target="_blank" rel="noreferrer">
+    <i class="fab fa-github"></i>
+  </a>
+  <div class="card reveal">
+     <h3 style="margin-top:0">Location</h3>
+     <p>kallakurichi, Tamil Nadu, India</p>
+    <div style="border-radius:14px;overflow:hidden">
+            <!-- Simple map placeholder (replace src with an
+            embedded map if you want) -->
+      <img src="https://dummyimage.com/800x450/121726/ffffff&text=Map+placeholder" alt="Map placeholder">
+      </div>
+  </div>
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© <span id="year"></span> Naveen • Built with love & clean CSS</div>
+      <div><a href="#top">Back to top ↑</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    if(prefersLight) document.body.classList.add('light');
+    themeToggle.addEventListener('click', ()=>{
+      document.body.classList.toggle('light');
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', ()=> navLinks.classList.toggle('open'));
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
+    }, {threshold: 0.12});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
